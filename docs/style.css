@@ -1,0 +1,884 @@
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fff;
+    --muted: rgba(255,255,255,.72);
+    --glass: rgba(15,24,72,.76);
+    --border: rgba(255,255,255,.22);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--white);
+}
+
+button, a, textarea {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+}
+
+button:focus-visible, a:focus-visible, textarea:focus-visible {
+    outline: 2px solid #b9e1ff;
+    outline-offset: 3px;
+}
+
+.desktop {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 15% 38%, #7844ff 0%, transparent 43%),
+        radial-gradient(ellipse at 90% 18%, #237aff 0%, transparent 43%),
+        radial-gradient(ellipse at 50% 100%, #0061e7 0%, transparent 60%),
+        linear-gradient(135deg, #3020eb, #10166c 60%, #002b91);
+}
+
+.desktop::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(140deg, transparent 43%,
+            rgba(164,215,255,.85) 43.2%,
+            transparent 43.8%),
+        linear-gradient(155deg, transparent 40%,
+            rgba(0,10,59,.8) 52%,
+            rgba(0,53,155,.45) 65%,
+            transparent 78%);
+}
+
+/* Top navigation */
+
+.topbar {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 22px;
+    position: relative;
+    z-index: 5;
+    background: rgba(8,12,66,.5);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(20px);
+}
+
+.logo {
+    color: white;
+    font-size: 26px;
+    text-decoration: none;
+}
+
+.brand, .topbar nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.topbar nav {
+    display: flex;
+    gap: 22px;
+    margin-left: 3px;
+}
+
+.topbar nav a:hover {
+    opacity: .7;
+}
+
+/* Desktop shortcuts */
+
+.desktop-icons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.desktop-icon {
+    width: 90px;
+    min-height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 2px 5px #00113b;
+    cursor: pointer;
+}
+
+.desktop-icon:hover {
+    background: rgba(255,255,255,.13);
+    border-color: rgba(255,255,255,.12);
+}
+
+.folder {
+    font-size: 43px;
+}
+
+/* Main hero */
+
+.hero {
+    width: min(650px, 70%);
+    margin-left: auto;
+    margin-right: 12%;
+    padding-top: clamp(150px, 26vh, 250px);
+    padding-bottom: 170px;
+    animation: appear .65s ease both;
+}
+
+.welcome-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(12px);
+    font-size: 11px;
+}
+
+.green-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #65ffb1;
+    box-shadow: 0 0 8px rgba(101,255,177,.55);
+}
+
+.intro {
+    margin: 0 0 18px;
+    font-size: clamp(19px, 2vw, 28px);
+    letter-spacing: -.5px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(50px, 8vw, 100px);
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -4px;
+    text-shadow: 0 6px 24px rgba(0,0,0,.15);
+}
+
+.hero h1 span {
+    color: #a8dfff;
+}
+
+.description {
+    max-width: 465px;
+    margin: 22px 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.primary-btn, .secondary-btn {
+    min-height: 45px;
+    padding: 0 19px;
+    border-radius: 13px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.primary-btn {
+    color: #192765;
+    background: linear-gradient(135deg, #fff, #bfe0ff);
+    border: 1px solid rgba(255,255,255,.7);
+}
+
+.secondary-btn {
+    background: rgba(255,255,255,.1);
+    border: 1px solid var(--border);
+}
+
+.primary-btn:hover, .secondary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.hero-caption {
+    margin-top: 32px;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,.66);
+}
+
+/* Floating desktop windows */
+
+.floating-window {
+    position: absolute;
+    z-index: 6;
+    top: 85px;
+    right: 25px;
+    width: min(365px, calc(100% - 40px));
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--glass);
+    box-shadow: 0 25px 70px rgba(0,0,30,.25);
+    backdrop-filter: blur(25px);
+    animation: appear .2s ease;
+}
+
+.floating-window[hidden], .chat-overlay[hidden], .typing[hidden] {
+    display: none;
+}
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 4px 13px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.13);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.close-window {
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 8px;
+    border-radius: 12px;
+}
+
+.project:hover {
+    background: rgba(255,255,255,.08);
+}
+
+.project-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(255,255,255,.1);
+    font-size: 22px;
+}
+
+.project h3 {
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+
+.project p, .info-content {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.info-content {
+    font-size: 13px;
+}
+
+/* Bottom dock */
+
+.dock-container {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 20px);
+}
+
+.dock {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border: 1px solid rgba(255,255,255,.38);
+    border-radius: 23px;
+    background: rgba(235,241,255,.2);
+    box-shadow: 0 12px 45px rgba(0,0,40,.24);
+    backdrop-filter: blur(28px);
+}
+
+.dock-item {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 12px;
+    background: #f8f9ff;
+    color: #2365c9;
+    font-size: 23px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.dock-item:hover {
+    transform: translateY(-7px);
+}
+
+.terminal-icon {
+    color: #b5ffd3;
+    background: #172033;
+    font-size: 14px;
+}
+
+.dock-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,.35);
+    margin: 0 2px;
+}
+
+.ask-btn {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: 13px;
+    color: #19213c;
+    background: linear-gradient(135deg, white, #dfebff);
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.ask-btn:hover {
+    transform: translateY(-3px);
+}
+
+.sparkle {
+    color: #4b77ff;
+    font-size: 23px;
+}
+
+/* AI chat */
+
+.chat-overlay {
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 15px;
+    background: rgba(2,6,35,.42);
+    backdrop-filter: blur(6px);
+}
+
+.chat-window {
+    width: min(470px, 100%);
+    height: min(680px, calc(100svh - 30px));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 23px;
+    background: rgba(12,21,58,.94);
+    box-shadow: 0 30px 100px rgba(0,0,30,.45);
+    backdrop-filter: blur(30px);
+    animation: appear .25s ease;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.ai-avatar {
+    width: 41px;
+    height: 41px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    color: #4c66e7;
+    background: linear-gradient(135deg, white, #a9c7ff);
+    font-size: 25px;
+}
+
+.ai-title {
+    flex: 1;
+}
+
+.ai-title h2 {
+    margin: 0 0 4px;
+    font-size: 14px;
+}
+
+.ai-title p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.chat-control {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 10px;
+    background: rgba(255,255,255,.06);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex: 1;
+    min-height: 0;
+    padding: 20px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #56618a transparent;
+}
+
+.welcome-message {
+    max-width: 330px;
+    margin: 12px auto;
+    text-align: center;
+}
+
+.welcome-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 16px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 19px;
+    background: linear-gradient(135deg, white, #b5caff);
+    color: #4d67e7;
+    font-size: 31px;
+}
+
+.welcome-message h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.welcome-message p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.suggestions button {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,.17);
+    border-radius: 12px;
+    background: rgba(255,255,255,.055);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.suggestions button:hover {
+    background: rgba(255,255,255,.13);
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    animation: appear .15s ease;
+}
+
+.message.user {
+    align-items: flex-end;
+}
+
+.message.assistant {
+    align-items: flex-start;
+}
+
+.message-label {
+    margin: 0 0 6px 3px;
+    color: rgba(255,255,255,.6);
+    font-size: 10px;
+}
+
+.message-bubble {
+    max-width: 90%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 15px;
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.message.user .message-bubble {
+    border-color: rgba(170,199,255,.3);
+    border-bottom-right-radius: 5px;
+    background: linear-gradient(135deg, #627df3, #4e5bd1);
+}
+
+.message.assistant .message-bubble {
+    border-bottom-left-radius: 5px;
+    background: rgba(255,255,255,.075);
+}
+
+.message-bubble.streaming::after {
+    content: "▍";
+    display: inline-block;
+    margin-left: 3px;
+    color: #b6d9ff;
+    animation: blink .7s steps(2,start) infinite;
+}
+
+.typing {
+    align-items: center;
+    gap: 5px;
+    padding: 0 20px 12px;
+}
+
+.typing:not([hidden]) {
+    display: flex;
+}
+
+.typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #b7d5ff;
+    animation: bounce .7s infinite alternate;
+}
+
+.typing span:nth-child(2) { animation-delay: .15s; }
+.typing span:nth-child(3) { animation-delay: .3s; }
+
+.typing small {
+    margin-left: 6px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.chat-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 0 13px;
+    padding: 9px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 16px;
+    background: rgba(0,0,20,.22);
+}
+
+.chat-form:focus-within {
+    border-color: #a9caff;
+}
+
+.chat-form textarea {
+    width: 100%;
+    max-height: 110px;
+    resize: none;
+    padding: 8px 5px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.chat-form textarea::placeholder {
+    color: rgba(255,255,255,.5);
+}
+
+.send-btn {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, white, #b9d8ff);
+    color: #263c96;
+    font-size: 23px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.send-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.disclaimer {
+    margin: 10px 12px 13px;
+    text-align: center;
+    color: rgba(255,255,255,.45);
+    font-size: 9px;
+}
+
+.toast {
+    position: fixed;
+    z-index: 50;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #101b48;
+    font-size: 12px;
+}
+
+.toast[hidden] {
+    display: none;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+    to { visibility: hidden; }
+}
+
+@keyframes bounce {
+    to { opacity: .3; transform: translateY(-3px); }
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        gap: 10px;
+        padding: 0 12px;
+    }
+
+    .brand {
+        font-size: 11px;
+    }
+
+    .topbar nav {
+        gap: 10px;
+        margin-left: auto;
+    }
+
+    .topbar nav a {
+        font-size: 10px;
+    }
+
+    .desktop-icons {
+        top: 10px;
+        left: 2px;
+        gap: 4px;
+    }
+
+    .desktop-icon {
+        width: 66px;
+        min-height: 74px;
+        font-size: 10px;
+    }
+
+    .folder {
+        font-size: 34px;
+    }
+
+    .hero {
+        width: auto;
+        margin: 0 14px 0 76px;
+        padding-top: 185px;
+        padding-bottom: 140px;
+    }
+
+    .intro {
+        font-size: 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(39px, 10vw, 57px);
+        letter-spacing: -2px;
+        overflow-wrap: anywhere;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+
+    .primary-btn, .secondary-btn {
+        padding: 0 11px;
+        font-size: 10px;
+    }
+
+    .dock {
+        gap: 4px;
+        padding: 8px;
+        border-radius: 18px;
+    }
+
+    .dock-item {
+        width: 35px;
+        height: 36px;
+        font-size: 19px;
+    }
+
+    .dock-divider {
+        margin: 0 1px;
+    }
+
+    .ask-btn {
+        padding: 0 9px;
+        font-size: 10px;
+    }
+
+    .floating-window {
+        top: 12px;
+        right: 8px;
+        width: min(300px, calc(100% - 80px));
+    }
+
+    .chat-overlay {
+        padding: 8px;
+    }
+
+    .chat-window {
+        height: calc(100svh - 16px);
+        border-radius: 19px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dock icons with app names underneath */
+
+.dock {
+    align-items: center;
+    gap: 8px;
+}
+
+.dock-item {
+    width: 54px;
+    height: auto;
+    min-height: 65px;
+    padding: 3px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.dock-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #f8f9ff;
+    color: #2365c9;
+    font-size: 22px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.dock-item:hover .dock-icon {
+    transform: translateY(-4px);
+}
+
+.dock-label {
+    font-size: 10px;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.dock-item .terminal-icon {
+    background: #172033;
+    color: #b5ffd3;
+}
+
+@media (max-width: 600px) {
+    .dock {
+        gap: 2px;
+        padding: 8px;
+    }
+
+    .dock-item {
+        width: 43px;
+        min-height: 59px;
+        gap: 4px;
+    }
+
+    .dock-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .dock-label {
+        font-size: 9px;
+    }
+}

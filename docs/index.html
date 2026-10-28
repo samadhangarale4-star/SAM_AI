@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samadhan | AI Portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="desktop" id="home">
+
+        <header class="topbar">
+            <a class="logo" href="#home">✦</a>
+            <a class="brand" href="#home">Samadhan's Portfolio</a>
+
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+
+                <a
+                    href="./resume.pdf"
+                    id="resumeLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Resume</a>
+
+                <a
+                    href="./resume.pdf"
+                    download="Samadhan_Garale_Resume.pdf"
+                >Download Resume</a>
+            </nav>
+        </header>
+
+        <aside class="desktop-icons">
+            <button class="desktop-icon" data-window="projects">
+                <span class="folder">📁</span>
+                <span>Projects</span>
+            </button>
+            <button class="desktop-icon" data-window="about">
+                <span class="folder">📁</span>
+                <span>About Me</span>
+            </button>
+            <button class="desktop-icon" data-window="skills">
+                <span class="folder">📁</span>
+                <span>Skills</span>
+            </button>
+            <button class="desktop-icon" data-window="contact">
+                <span class="folder">📁</span>
+                <span>Contact</span>
+            </button>
+        </aside>
+
+        <main class="hero">
+            <div class="welcome-pill">
+                <span class="green-dot"></span>
+                Welcome to my digital space
+            </div>
+
+            <p class="intro">Hey, I'm Samadhan! Welcome to my</p>
+            <h1>PORTFOLIO<span>.</span></h1>
+
+            <p class="description">
+                Developer, problem solver, and AI enthusiast.
+                Explore my projects or ask my AI assistant anything about me.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn" id="heroAsk">✦ Ask My AI</button>
+                <button class="secondary-btn" data-window="projects">
+                    Explore Projects ↗
+                </button>
+            </div>
+
+            <p class="hero-caption">BUILT WITH CURIOSITY · POWERED BY AI</p>
+        </main>
+
+        <section class="floating-window" id="projectsWindow" hidden>
+            <div class="window-header">
+                <span>Featured Projects</span>
+                <button class="close-window" data-close="projectsWindow">×</button>
+            </div>
+
+            <article class="project">
+                <div class="project-icon">🌿</div>
+                <div>
+                    <h3>Citizen Science Species Log</h3>
+                    <p>Record and explore species sightings.</p>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-icon">♻️</div>
+                <div>
+                    <h3>Waste Watch</h3>
+                    <p>Building inspections for waste segregation.</p>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-icon">🤖</div>
+                <div>
+                    <h3>AI Portfolio Agent</h3>
+                    <p>A streaming AI assistant powered by Groq.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="floating-window info-window" id="infoWindow" hidden>
+            <div class="window-header">
+                <span id="infoTitle">Information</span>
+                <button class="close-window" data-close="infoWindow">×</button>
+            </div>
+            <div id="infoContent" class="info-content"></div>
+        </section>
+
+        <footer class="dock-container">
+            <div class="dock">
+                <button class="dock-item" data-window="home">
+                    <span class="dock-icon">⌂</span>
+                    <span class="dock-label">Home</span>
+                </button>
+                <button class="dock-item" data-window="projects">
+                    <span class="dock-icon">🧭</span>
+                    <span class="dock-label">Projects</span>
+                </button>
+                <button class="dock-item" data-window="about">
+                    <span class="dock-icon">🌈</span>
+                    <span class="dock-label">About Me</span>
+                </button>
+                <button class="dock-item" data-window="skills">
+                    <span class="dock-icon">📝</span>
+                    <span class="dock-label">Skills</span>
+                </button>
+                <button class="dock-item" data-window="contact">
+                    <span class="dock-icon terminal-icon">⌘_</span>
+                    <span class="dock-label">Contact</span>
+                </button>
+                <span class="dock-divider"></span>
+                <button class="ask-btn" id="dockAsk">
+                    <span class="sparkle">✦</span>
+                    <span>Ask Me</span>
+                </button>
+            </div>
+        </footer>
+
+        <div class="chat-overlay" id="chatOverlay" hidden>
+            <section class="chat-window" role="dialog" aria-modal="true">
+                <header class="chat-header">
+                    <div class="ai-avatar">✦</div>
+                    <div class="ai-title">
+                        <h2>Samadhan AI</h2>
+                        <p><span class="green-dot"></span> Portfolio Assistant</p>
+                    </div>
+                    <button class="chat-control" id="newChat" title="New chat">↻</button>
+                    <button class="chat-control" id="closeChat" title="Close">×</button>
+                </header>
+
+                <div class="chat-messages" id="chatMessages" aria-live="polite">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">✦</div>
+                        <h3>Hey there! 👋</h3>
+                        <p>
+                            I'm Samadhan's AI assistant.
+                            Ask me about projects, skills, or experience.
+                        </p>
+                        <div class="suggestions">
+                            <button data-question="Tell me about Samadhan's projects">
+                                🚀 Explore his projects
+                            </button>
+                            <button data-question="What technical skills does Samadhan have?">
+                                💻 Technical skills
+                            </button>
+                            <button data-question="Tell me about Samadhan">
+                                👋 About Samadhan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typing" id="typing" hidden>
+                    <span></span><span></span><span></span>
+                    <small>Generating response...</small>
+                </div>
+
+                <form class="chat-form" id="chatForm">
+                    <textarea id="chatInput" rows="1"
+                        placeholder="Ask me anything..."
+                        aria-label="Message" required></textarea>
+                    <button class="send-btn" id="sendBtn" type="submit"
+                        aria-label="Send message">↑</button>
+                </form>
+
+                <p class="disclaimer">AI can make mistakes. Verify important information.</p>
+            </section>
+        </div>
+
+        <div class="toast" id="toast" role="status"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
